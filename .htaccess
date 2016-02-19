@@ -1,0 +1,14 @@
+# On évite des erreurs 500 si mod_rewrite n'est pas installé
+<IfModule mod_rewrite.c>
+
+  # On active mod_rewrite
+	RewriteEngine On
+
+  # Placé dans un dossier, ce htaccess redirige toutes les requêtes vers ailleurs
+	RewriteRule ^(.*)$	http://planf.be/$1	[R=301,L]
+
+  # Rediriger toutes les requêtes sur un autre nom de domaine
+	RewriteCond %{HTTP_HOST} ^(www\.)?montagnemagique.be$
+	RewriteRule (.*) http://theatremontagnemagique.be/$1 [R=301,L]
+
+</IfModule>
