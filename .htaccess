@@ -10,5 +10,9 @@
   # Rediriger toutes les requêtes sur un autre nom de domaine
 	RewriteCond %{HTTP_HOST} ^(www\.)?montagnemagique.be$
 	RewriteRule (.*) http://theatremontagnemagique.be/$1 [R=301,L]
+	
+  # forcer le www en début d'adresse
+  	RewriteCond %{HTTP_HOST} !^www\. [NC]
+  	RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 </IfModule>
