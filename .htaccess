@@ -19,4 +19,8 @@
 	RewriteCond %{HTTPS} !on$	
 	RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+  # Redirection d'une page sur une autre
+ 	RewriteCond %{REQUEST_URI} -Agenda-
+ 	RewriteRule ^(.*) http://%{HTTP_HOST}/spip.php?page=agendabe [R,L]
+
 </IfModule>
