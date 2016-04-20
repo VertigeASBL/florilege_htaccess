@@ -14,5 +14,9 @@
   # forcer le www en début d'adresse
   	RewriteCond %{HTTP_HOST} !^www\. [NC]
   	RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	
+  # Redirection sur https
+	RewriteCond %{HTTPS} !on$	
+	RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 </IfModule>
